@@ -25,7 +25,6 @@ public class AdmobAds : MonoBehaviour
         AdmobAds.instance = this;
     }
 
-    [Obsolete]
     protected virtual void Start()
     {
         MobileAds.RaiseAdEventsOnUnityMainThread = true;
@@ -34,12 +33,10 @@ public class AdmobAds : MonoBehaviour
             print("Ads Init");
             Debug.Log("Ads Init");
         });
-
     }
 
     #region Banner
 
-    [Obsolete]
     public void LoadBanner()
     {
         CreatBannerView();
@@ -55,13 +52,12 @@ public class AdmobAds : MonoBehaviour
         bannerView.LoadAd(adRequest);
     }
 
-    [Obsolete]
     void CreatBannerView()
     {
         if (this.bannerView != null)
             DestroyBanner();
 
-        bannerView = new BannerView(bannerId, AdSize.SmartBanner, AdPosition.Bottom);
+        bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Bottom);
     }
 
     void ListenBannerEvent()
@@ -195,6 +191,7 @@ public class AdmobAds : MonoBehaviour
 
     public void LoadRewardAd()
     {
+        Debug.Log("LoadRewardAd");
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
@@ -215,7 +212,8 @@ public class AdmobAds : MonoBehaviour
             rewardedAd = ad;
             RewardedAdEvents(rewardedAd);
         });
-        this.ShowRewardAd();
+        
+        
     }
 
     public ItemInventory itemInventory;
@@ -231,7 +229,10 @@ public class AdmobAds : MonoBehaviour
                 UIReward.Instance.AddReward(itemInventory);
             });
         }
-        else Debug.LogError("Rewarded ad is not ready yet.");
+        else
+        {
+            Debug.LogError("Rewarded ad is not ready yet.");
+        }
     }
 
     public void RewardedAdEvents(RewardedAd ad)
@@ -261,6 +262,7 @@ public class AdmobAds : MonoBehaviour
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
+            this.LoadRewardAd();
             Debug.Log("Rewarded ad full screen content closed.");
         };
         // Raised when the ad failed to open full screen content.

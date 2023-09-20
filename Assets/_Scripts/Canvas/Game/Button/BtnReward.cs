@@ -35,7 +35,7 @@ public class BtnReward : BaseButton
     protected override void OnClick()
     {
         if (!isReady) return;
-        AdmobAds.Instance.LoadRewardAd();
+        AdmobAds.Instance.ShowRewardAd();
         this.isReady = false;
         StartCoroutine(Timing());
     }

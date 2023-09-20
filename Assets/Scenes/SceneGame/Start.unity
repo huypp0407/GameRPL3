@@ -2950,9 +2950,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da1db88a3ec349da90fceb81fe26687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCoinsTxt: {fileID: 0}
   appId: ca-app-pub-1385093244148841~5602672977
-  coins: 0
+  itemInventory:
+    itemProfileSO: {fileID: 0}
+    itemCount: 0
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!4 &974600420
 Transform:
   m_ObjectHideFlags: 0

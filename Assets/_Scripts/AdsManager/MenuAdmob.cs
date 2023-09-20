@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MenuAdmob : MonoBehaviour
 {
-    [System.Obsolete]
     private void Start()
     {
         AdmobAds.Instance.LoadBanner();
