@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc7483116a1642ef8595cbedea00d43, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  enemyName: Boss
+  enemyCode: 3
+  upgradeLevels:
+  - enemyHp: 10
+    ememyDamage: 2
+    ememySpeed: 2.5
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+  - enemyHp: 10
+    ememyDamage: 2.5
+    ememySpeed: 2.4
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: a7e59090df63e4093843a0e718f9be35, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+  - enemyHp: 10
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  - enemyHp: 1000
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  - enemyHp: 20
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  - enemyHp: 20
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  - enemyHp: 20
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  - enemyHp: 20
+    ememyDamage: 3
+    ememySpeed: 2.6
+    dropList: []
+  walkSteps: []
+  punch: {fileID: 8300000, guid: d8ef249a9161c47fbb3a351d1d64407e, type: 3}
