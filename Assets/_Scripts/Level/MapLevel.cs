@@ -30,18 +30,14 @@ public class MapLevel : _MonoBehaviour
         base.Start();
         if (MapLevel.instance != null) return;
         MapLevel.instance = this;
+        this.levelCurrent = StateGameCtrl.level;
+        Debug.LogError($"HUYPP :: levelCurrent :: {levelCurrent}");
     }
 
     public virtual void LevelUp()
     {
-        this.levelCurrent++;
+        PlayerPrefs.SetInt("Lv" + levelCurrent, 1);
         this.LimitLevel();
-        PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
-        PlayerCtrl.Instance.PlayerDamageReceiver.Add(1);
-        
-        BulletSO bullet_3 = Resources.Load<BulletSO>("bullet/bullet_3");
-        bullet_3.DamageUpgrade(0.2f);
-        this.canSpawnBoss = true;
     }
 
     public virtual void Leveling()

@@ -31,27 +31,21 @@ public class SaveManager : MonoBehaviour
     {
         string inventoryName = "Inventory";
         string playerName = "Player";
+        string mapLevel = "Maplevel";
         if (StateGameCtrl.isNewGame)
         {
             inventoryName = "Inventory_Default";
             playerName = "Player_Default";
+            mapLevel = "Maplevel_Default";
             StateGameCtrl.isNewGame = false;
         }
         string jsonInventory = SaveSystem.GetString(inventoryName);
-        Debug.Log(jsonInventory);
+        Debug.LogError($"HUYPP :: inventoryName :: {inventoryName} :: {jsonInventory}");
         PlayerCtrl.Instance.Inventory.InventoryFromJson(jsonInventory);
 
         string jsonPlayer = SaveSystem.GetString(playerName);
-        Debug.Log(jsonPlayer);
-        PlayerData playerData = this.PlayerFromJson(jsonPlayer);
-        if (StateGameCtrl.nextLevel)
-        {
-            playerData.playerPos = Vector3.zero;
-            playerData.score++;
-            StateGameCtrl.nextLevel = false;
-        }
-        Player.Instance.SetData(playerData);
-
+        Debug.LogError($"HUYPP :: jsonPlayer :: {jsonPlayer}");
+        
         //string jsonInventory = SaveSystem.GetString("character");
         //Debug.Log(jsonInventory);
         //Character.Instance.InventoryFromJson(jsonInventory);
@@ -59,21 +53,9 @@ public class SaveManager : MonoBehaviour
 
     public virtual void SaveGame()
     {
-        Player.Instance.LoadData();
         string jsonInventory = JsonUtility.ToJson(PlayerCtrl.Instance.Inventory);
+        Debug.LogError($"HUYPP :: inventoryName :: Inventory :: {jsonInventory}");
         SaveSystem.SetString("Inventory", jsonInventory);
-        Debug.Log(jsonInventory);
-
-        string jsonPlayer = JsonUtility.ToJson(Player.Instance);
-        SaveSystem.SetString("Player", jsonPlayer);
-        Debug.Log(jsonPlayer);
-
-    }
-
-    public virtual PlayerData PlayerFromJson(string jsonString)
-    {
-        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonString);
-        return playerData;
     }
 
     public virtual void Savecharacter()

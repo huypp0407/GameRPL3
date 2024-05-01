@@ -66,10 +66,18 @@ public class PlayerCtrl : _MonoBehaviour
 
     void SetUp()
     {
-        this.playerFootStep.playerCtrl = this;
-        this.playerMove.playerCtrl = this;
-        this.playerDamageReceiver.playerCtrl = this;
-        this.playerShooting.playerCtrl = this;
+        if (this.playerFootStep != null) {
+          this.playerFootStep.playerCtrl = this;
+        }
+        if (this.playerMove != null) {
+          this.playerMove.playerCtrl = this;
+        }
+        if (this.playerDamageReceiver != null) {
+          this.playerDamageReceiver.playerCtrl = this;
+        }
+        if (this.playerShooting != null) {
+          this.playerShooting.playerCtrl = this;
+        }
     }
 
     protected virtual void LoadRigidbody()
@@ -105,7 +113,7 @@ public class PlayerCtrl : _MonoBehaviour
     protected virtual void LoadMeshCharacter()
     {
         if (this.meshCharacter != null) return;
-        this.meshCharacter = GameObject.Find("CharacterSkin").GetComponentInChildren<SkinnedMeshRenderer>();
+        this.meshCharacter = GameObject.Find("CharacterSkin")?.GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     protected virtual void LoadPlayerDamageReceiver()
@@ -143,6 +151,8 @@ public class PlayerCtrl : _MonoBehaviour
     {
         string character = PlayerPrefs.GetString("Character");
         ItemProfileSO item = ItemProfileSO.FindByItemName(character);
-        this.meshCharacter.sharedMesh = item.mesh;
+        if (meshCharacter != null) {
+          meshCharacter.sharedMesh = item.mesh;
+        }
     }
 }

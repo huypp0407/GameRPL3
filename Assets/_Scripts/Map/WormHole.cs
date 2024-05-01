@@ -6,11 +6,9 @@ public class WormHole : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            transform.position = new Vector3(0, 20, 0);
-            UILevel.Instance.Toggle();
-            MapLevel.Instance.LevelUp();
+            // MapLevel.Instance.LevelUp();
+            AsyncLoader.Instance.LoadLevel("start");
             SaveManager.Instance.SaveGame();
-
         }
     }
 }

@@ -20,7 +20,7 @@ public class PlayerDamageReceiver : DamageReceiver
     {
         this.OnDeadFX();
         SaveManager.Instance.SaveGame();
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Start");
     }
 
     protected virtual void OnDeadFX()

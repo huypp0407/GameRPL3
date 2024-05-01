@@ -49,6 +49,7 @@ public class AsyncLoader : _MonoBehaviour
 
     IEnumerator LoadLevelAsync(string levelToRoad)
     {
+        // yield return new WaitForSeconds(5f);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(levelToRoad);
 
         while (!asyncOperation.isDone)
