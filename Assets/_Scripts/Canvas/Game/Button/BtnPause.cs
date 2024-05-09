@@ -6,6 +6,7 @@ public class BtnPause : BaseButton
 {
     protected override void OnClick()
     {
+      Debug.LogError($"HUYPP :: OnClick");
         UIPause.Instance.Toggle();
     }
 }

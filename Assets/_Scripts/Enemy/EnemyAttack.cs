@@ -52,7 +52,7 @@ public class EnemyAttack : EnemyMovementAbstract
         this.enemyCtrl.EnemyShooting.isAttack = false;
 
         Vector3 direction = (this.target.position - transform.position).normalized;
-        this.enemyCtrl.Rigibody.velocity = Vector3.Lerp(enemyCtrl.Rigibody.velocity, new Vector3(direction.x, this.enemyCtrl.Rigibody.velocity.y, direction.z) * speed, Time.fixedDeltaTime * 12);
+        // this.enemyCtrl.Rigibody.velocity = Vector3.Lerp(enemyCtrl.Rigibody.velocity, new Vector3(direction.x, this.enemyCtrl.Rigibody.velocity.y, direction.z) * speed, Time.fixedDeltaTime * 12);
     }
 
     IEnumerator Jump()
