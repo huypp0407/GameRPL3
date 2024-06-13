@@ -6,7 +6,7 @@ public class WormHole : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            // MapLevel.Instance.LevelUp();
+            MapLevel.Instance.LevelUp();
             AsyncLoader.Instance.LoadLevel("start");
             SaveManager.Instance.SaveGame();
         }

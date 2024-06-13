@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BossDamageReceive : EnemyDamageReceive
 {
-    
-
     protected override void OnDead()
     {
         EnemySpawner.Instance.ClearEnemyFromBoss();

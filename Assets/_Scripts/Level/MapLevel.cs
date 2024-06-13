@@ -31,13 +31,13 @@ public class MapLevel : _MonoBehaviour
         if (MapLevel.instance != null) return;
         MapLevel.instance = this;
         this.levelCurrent = StateGameCtrl.level;
-        Debug.LogError($"HUYPP :: levelCurrent :: {levelCurrent}");
     }
 
-    public virtual void LevelUp()
-    {
+    public virtual void LevelUp() {
+      levelCurrent++;
+        if(PlayerPrefs.GetInt("Lv" + levelCurrent) > 0) return;
         PlayerPrefs.SetInt("Lv" + levelCurrent, 1);
-        this.LimitLevel();
+        PlayerPrefs.SetInt("Timelinee-Lv" + levelCurrent, 1);
     }
 
     public virtual void Leveling()

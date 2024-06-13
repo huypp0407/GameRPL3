@@ -2,48 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class LevelSelection : _MonoBehaviour {
-  [SerializeField] protected GameObject lockedImage;
-  [SerializeField] protected GameObject[] stars;
-  [SerializeField] protected Sprite starUnlock;
+  [SerializeField] protected CanvasGroup lockedImage;
   private bool unlocked = false;
+  [SerializeField] protected PlayableDirector timeline;
 
   protected override void Start() {
-    PlayerPrefs.SetInt("Lv1", 1);
-    PlayerPrefs.SetInt("Lv2", 2);
-    PlayerPrefs.SetInt("Lv3", 3);
+    // PlayerPrefs.SetInt("Lv1", 1);
+    // PlayerPrefs.SetInt("Lv2", 0);
+    // PlayerPrefs.SetInt("Lv3", 0);
+    // PlayerPrefs.SetInt("Timelinee-Lv2", 0);
+    // PlayerPrefs.SetInt("Timelinee-Lv3", 0);
     UpdateLevelStatus();
-    UpdateLevelStar();
   }
 
   public void UpdateLevelStatus() {
-    int preLevel = int.Parse(gameObject.name) - 1;
+    int preLevel = int.Parse(gameObject.name);
+    if (PlayerPrefs.GetInt("Timelinee-Lv" + preLevel) > 0 && gameObject.name != "1") {
+      timeline.Play();
+      PlayerPrefs.SetInt("Timelinee-Lv" + preLevel, 0);
+    }
     if(PlayerPrefs.GetInt("Lv" + preLevel) > 0 || gameObject.name == "1") {
       unlocked = true;
     }
-  }
-
-  public void UpdateLevelStar() {
-    lockedImage.SetActive(!unlocked);
-    for(int i = 0; i < stars.Length; i++)
-    {
-      stars[i].SetActive(unlocked);
-    }
-
-    if (unlocked) {
-      int starNumber = PlayerPrefs.GetInt("Lv" + int.Parse(gameObject.name));
-      for (int i = 0; i < starNumber; i++) {
-        stars[i].gameObject.GetComponent<Image>().sprite = starUnlock;
-      }
-    }
+    lockedImage.alpha = !unlocked ? 1 : 0;
   }
 
   public void onSelectLevel() {
     if(!unlocked) return;
+    SaveManager.Instance.SaveGame();
     StateGameCtrl.level = int.Parse(gameObject.name);
-    Debug.LogError($"HUYPP :: StateGameCtrl.level");
     AsyncLoader.Instance.LoadLevel("lv" + gameObject.name);
   }
 }

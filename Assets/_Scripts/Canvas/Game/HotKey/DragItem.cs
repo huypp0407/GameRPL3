@@ -15,9 +15,13 @@ public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     {
         base.LoadComponent();
         this.LoadRectTransform();
-        this.LoadCanvas();
         this.LoadCanvasGroup();
         this.LoadImage();
+    }
+
+    protected override void Awake() {
+      base.Awake();
+      this.LoadCanvas();
     }
 
     protected virtual void LoadRectTransform()
@@ -26,10 +30,8 @@ public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
         this.rectTransform = GetComponent<RectTransform>();
     }
 
-    protected virtual void LoadCanvas()
-    {
-        if (this.canvas != null) return;
-        this.canvas = transform.GetComponentInParent<Canvas>();
+    protected virtual void LoadCanvas() {
+      if (this.canvas != null) return;
     }
 
     protected virtual void LoadCanvasGroup()

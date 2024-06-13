@@ -8,7 +8,7 @@ public class TextScore : _MonoBehaviour
     private static TextScore instance;
     public static TextScore Instance => instance;
 
-    [SerializeField] protected int score = 13;
+    [SerializeField] protected int score = 0;
     public int Score => score;
 
     [SerializeField] protected int kill = 0;

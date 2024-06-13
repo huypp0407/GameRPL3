@@ -20,7 +20,7 @@ public class AllBulletCtrl : _MonoBehaviour
         this.LoadDamageSender();
         this.LoadBulletSO();
         this.LoadImpact();
-        if(bulletSpawner == null) this.SetUp();
+        if(bulletSpawner != null) this.SetUp();
     }
 
     public void SetUp()

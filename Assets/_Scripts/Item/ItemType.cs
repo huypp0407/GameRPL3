@@ -4,4 +4,7 @@ public enum ItemType
     Resource = 1,
     Equiment = 2,
     Clothing = 3,
+    Ability = 4,
+    Weapon = 5,
+    Prize = 6
 }

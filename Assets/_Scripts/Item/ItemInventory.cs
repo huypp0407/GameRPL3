@@ -8,6 +8,7 @@ public class ItemInventory
     public int itemCount = 0;
     public int maxStack = 7;
     public int upgradeLevel = 0;
+    public GameObject button;
 
     public virtual ItemInventory Clone()
     {

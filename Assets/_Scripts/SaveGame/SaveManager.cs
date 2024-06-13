@@ -40,21 +40,18 @@ public class SaveManager : MonoBehaviour
             StateGameCtrl.isNewGame = false;
         }
         string jsonInventory = SaveSystem.GetString(inventoryName);
-        Debug.LogError($"HUYPP :: inventoryName :: {inventoryName} :: {jsonInventory}");
         PlayerCtrl.Instance.Inventory.InventoryFromJson(jsonInventory);
 
         string jsonPlayer = SaveSystem.GetString(playerName);
-        Debug.LogError($"HUYPP :: jsonPlayer :: {jsonPlayer}");
         
-        //string jsonInventory = SaveSystem.GetString("character");
-        //Debug.Log(jsonInventory);
-        //Character.Instance.InventoryFromJson(jsonInventory);
+        // string jsonCharacter= PlayerPrefs.GetString("character");
+        // Debug.Log(jsonInventory);
+        // Character.Instance.InventoryFromJson(jsonCharacter);
     }
 
     public virtual void SaveGame()
     {
         string jsonInventory = JsonUtility.ToJson(PlayerCtrl.Instance.Inventory);
-        Debug.LogError($"HUYPP :: inventoryName :: Inventory :: {jsonInventory}");
         SaveSystem.SetString("Inventory", jsonInventory);
     }
 

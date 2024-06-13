@@ -14,8 +14,8 @@ public class EnemyCtrl : _MonoBehaviour
     [SerializeField] protected EnemyDamageSender enemyDamageSender;
     public EnemyDamageSender EnemyDamageSender => enemyDamageSender;
 
-    [SerializeField] protected EnemyShooting enemyShooting;
-    public EnemyShooting EnemyShooting => enemyShooting;
+    [SerializeField] protected EnemyShootingCtrl enemyShooting;
+    public EnemyShootingCtrl EnemyShooting => enemyShooting;
 
     [SerializeField] protected EnemySO enemySO;
     public EnemySO EnemySO => enemySO;
@@ -69,7 +69,6 @@ public class EnemyCtrl : _MonoBehaviour
         this._rigibody = GetComponent<Rigidbody>();
     }
 
-
     public void SetUp()
     {
         if(this.enemyMove != null) this.enemyMove.enemyCtrl = this;
@@ -77,7 +76,9 @@ public class EnemyCtrl : _MonoBehaviour
         this.enemyDamageReceiver.enemyCtrl = this;
         this.enemyImpact.enemyCtrl = this;
         this.enemyDamageSender.enemyCtrl = this;
-        if (this.enemyShooting != null) this.enemyShooting.enemyCtrl = this;
+        if (this.enemyShooting != null) {
+          this.enemyShooting.enemyCtrl = this;
+        }
         if (this.enemyFootStep != null) this.enemyFootStep.enemyCtrl = this;
         if (this.abilities != null) this.abilities.enemyCtrl = this;
     }
@@ -158,6 +159,6 @@ public class EnemyCtrl : _MonoBehaviour
     protected virtual void LoadEnemyShooting()
     {
         if (this.enemyShooting != null) return;
-        this.enemyShooting = GetComponentInChildren<EnemyShooting>();
+        this.enemyShooting = GetComponentInChildren<EnemyShootingCtrl>();
     }
 }

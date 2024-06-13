@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyCode: 2
   upgradeLevels:
   - enemyHp: 1
-    ememyDamage: 1.2
+    ememyDamage: 1
     ememySpeed: 2.9
     dropList:
     - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
@@ -27,16 +27,48 @@ MonoBehaviour:
       dropRate: 100000
       minDrop: 0
       maxDrop: 0
-  - enemyHp: 5.5
-    ememyDamage: 1.4
-    ememySpeed: 2.85
+  - enemyHp: 3
+    ememyDamage: 1.2
+    ememySpeed: 2.95
     dropList:
     - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
-      dropRate: 100000
+      dropRate: 80000
       minDrop: 0
       maxDrop: 0
     - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
-      dropRate: 100000
+      dropRate: 60000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 7354d1140aac04b589e780b4ae5e0889, type: 2}
+      dropRate: 30000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: cd015d5b682334d17a3d5dce1e308713, type: 2}
+      dropRate: 20000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: f7f7532c287ac433bab56c9eea8d127c, type: 2}
+      dropRate: 10000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: bd45a8a41dca8438fbb6a016364f7ee2, type: 2}
+      dropRate: 10000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 144442fab802549d0be2ee1231b5208a, type: 2}
+      dropRate: 10000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: d85f4c7ca4e4f483da84d25a953c3469, type: 2}
+      dropRate: 10000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 90d953905bc9b4a17a1df2f6cd231e5e, type: 2}
+      dropRate: 10000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 114dcb2117cb74adc98fbd908fba861f, type: 2}
+      dropRate: 10000
       minDrop: 0
       maxDrop: 0
   - enemyHp: 6

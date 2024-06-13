@@ -15,6 +15,15 @@ public enum ItemCode
     Cowboy = 9,
     Damage = 10,
     AttackSpeed = 11,
+    Guard = 12,
+    Bomb = 13,
+    Smoke = 14,
+    Sword = 15,
+    Boomerang = 16,
+    GoodBox = 17,
+    BadBox = 18,
+    RandomBox = 19,
+    Gun = 20,
 }
 
 public class ItemCodeParse

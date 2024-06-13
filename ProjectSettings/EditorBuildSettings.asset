@@ -9,29 +9,29 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneGame/Start.unity
     guid: 0e332917c011349aa9b067526e6791ed
   - enabled: 1
-    path: Assets/Scenes/SceneGame/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/SceneGame/Menu.unity
-    guid: f582222fa07a74a7498319f7d21c5e73
-  - enabled: 1
     path: Assets/Scenes/SceneGame/Maplevel/lv1.unity
     guid: 27881e25954764ea18e4779530627cd6
   - enabled: 1
     path: Assets/Scenes/SceneGame/Maplevel/lv2.unity
-    guid: ff7ead6901e0249a08b5f597a55c85c7
+    guid: c4a088b71e9af4228b27a5a70bf8c578
   - enabled: 1
-    path: Assets/Scenes/SceneGame/Maplevel/lv3.unity
-    guid: ebc3e03c10aad4b68a8d69fd4c372477
-  - enabled: 1
-    path: Assets/Scenes/SceneGame/Maplevel/lv4.unity
-    guid: 6bc5f3f202f2e4d94a44c56729817b45
-  - enabled: 1
-    path: Assets/Scenes/SceneGame/Maplevel/lv5.unity
-    guid: b737bf840f256446abbbbfd70293effc
-  - enabled: 1
-    path: Assets/Scenes/SceneGame/Maplevel/lv6.unity
-    guid: 470be12aefbf442438e130aef1f6a998
+    path: Assets/Scenes/SceneGame/Maplevel/Pathfinding.unity
+    guid: bb1d7212c04bc45799d385c1d34adc92
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f862f5c8bf03a439e8e107306b6e1321,
       type: 2}

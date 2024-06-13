@@ -11,6 +11,6 @@ public class EnemyLookAtTarget : EnemyMovementAbstract
 
     protected virtual void LookAtTarget()
     {
-        transform.parent.LookAt(this.target.position, Vector3.up);
+        // transform.parent.LookAt(this.target.position, Vector3.up);
     }
 }

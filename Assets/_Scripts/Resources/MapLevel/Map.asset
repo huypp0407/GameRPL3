@@ -15,10 +15,12 @@ MonoBehaviour:
   levelMaps:
   - enemyTimers:
     - timer: 5
-      count: 5
+      count: 10
+    - timer: 25
+      count: 15
   - enemyTimers:
     - timer: 25
-      count: 5
+      count: 20
     - timer: 50
       count: 10
     - timer: 70
@@ -29,15 +31,15 @@ MonoBehaviour:
       count: 30
   - enemyTimers:
     - timer: 25
-      count: 5
+      count: 15
     - timer: 50
-      count: 10
+      count: 15
     - timer: 70
       count: 15
     - timer: 100
-      count: 20
-    - timer: 1000
-      count: 30
+      count: 15
+    - timer: 200
+      count: 15
   - enemyTimers:
     - timer: 25
       count: 5

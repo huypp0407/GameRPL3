@@ -59,9 +59,9 @@ public class EnemySpawner : Spawner
     {
         if (this.index >= this.mapSO.levelMaps[MapLevel.Instance.LevelCurrent - 1].enemyTimers.Count)
         {
-            if (this.CheckEnemyCount())
-                MapLevel.Instance.Leveling();
-            return;
+          if (this.CheckEnemyCount())
+            MapLevel.Instance.Leveling();
+          return;
         }
         if (!canSpawn) return;
         timer += Time.fixedDeltaTime;

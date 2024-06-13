@@ -1,34 +1,23 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
 public class EnemyAttack : EnemyMovementAbstract
 {
-    [SerializeField] protected float distance = 0f;
-    [SerializeField] protected float minDistance = 7f;
-    [SerializeField] protected float speed = 2f;
-
-    public float jumpPowew = 1;
-    public int numJump = 1;
-    public float duration = 1;
-    public bool snapping;
-
     private void OnEnable()
     {
         this.minDistance = 7f;
         this.enemyCtrl.Animator.SetFloat("walk", 1);
-        this.speed = 3;
+        this.speed = 2.5f;
         this.isWalk = true;
     }
-
     private void OnDestroy()
     {
         DOTween.KillAll();
     }
-
-    protected virtual void FixedUpdate()
-    {
-        this.Move();
+    private void FixedUpdate() {
+      this.Move();
     }
 
     protected virtual void Move()
@@ -41,17 +30,21 @@ public class EnemyAttack : EnemyMovementAbstract
             StartCoroutine(Jump());
         }
 
-        if (this.distance < 1f)
-        {
+        if (this.distance < 2f) {
+          this.isUpdatePath = false;
             this.enemyCtrl.Animator.SetFloat("walk", 0);
             this.enemyCtrl.EnemyShooting.isAttack = true;
+            transform.parent.LookAt(target);
+            Vector3 directionAttack = (this.target.position - transform.position).normalized;
+            this.enemyCtrl.Rigibody.velocity = Vector3.Lerp(enemyCtrl.Rigibody.velocity, new Vector3(directionAttack.x, this.enemyCtrl.Rigibody.velocity.y, directionAttack.z) * speed,Time.fixedDeltaTime*12);
             return;
         }
         
         this.enemyCtrl.Animator.SetFloat("walk", 1);
         this.enemyCtrl.EnemyShooting.isAttack = false;
 
-        Vector3 direction = (this.target.position - transform.position).normalized;
+        Vector3 direction = transform.parent.forward;
+        this.enemyCtrl.Rigibody.velocity = Vector3.Lerp(enemyCtrl.Rigibody.velocity, new Vector3(direction.x, this.enemyCtrl.Rigibody.velocity.y, direction.z) * speed,Time.fixedDeltaTime*12);
         // this.enemyCtrl.Rigibody.velocity = Vector3.Lerp(enemyCtrl.Rigibody.velocity, new Vector3(direction.x, this.enemyCtrl.Rigibody.velocity.y, direction.z) * speed, Time.fixedDeltaTime * 12);
     }
 
@@ -68,10 +61,9 @@ public class EnemyAttack : EnemyMovementAbstract
         if(transform.parent != null) transform.parent.DOJump(fx.transform.position, 1, 1, .5f, snapping);
         yield return new WaitForSeconds(1f);
         this.enemyCtrl.EnemyLookAtTarget.target = PlayerCtrl.Instance.transform;
-        this.speed = 4;
+        this.speed = 3;
         this.isWalk = true;
         this.enemyCtrl.Animator.SetFloat("speed", 2);
-
     }
 
 }

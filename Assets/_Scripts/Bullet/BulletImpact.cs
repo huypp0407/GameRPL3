@@ -5,4 +5,4 @@ using UnityEngine;
 public class BulletImpact : _MonoBehaviour
 {
     public AllBulletCtrl allBulletCtrl;
-}
+    }

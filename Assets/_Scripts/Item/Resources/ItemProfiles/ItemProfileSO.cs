@@ -12,6 +12,7 @@ public class ItemProfileSO : ScriptableObject
     public Sprite sprite;
     public List<ItemRecipe> upgradeLevels;
     public Mesh mesh;
+    public GameObject ButtonPrefab;
 
     public static ItemProfileSO FindByItemCode(ItemCode itemCode)
     {

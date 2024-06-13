@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerShooting : Shooter
@@ -7,6 +8,7 @@ public class PlayerShooting : Shooter
     public PlayerCtrl playerCtrl;
     [SerializeField] protected static PlayerShooting instance;
     public static PlayerShooting Instance => instance;
+    protected string currentWeapon = "Gun";
 
     protected override void Awake()
     {
@@ -20,70 +22,129 @@ public class PlayerShooting : Shooter
         this.playerCtrl.Animator.SetTrigger("Attack");
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet, spawnPos, rotation);
     }
-
+    
     public override void Attack()
     {
         this.playerCtrl.Animator.SetTrigger("Attack");
     }
-
-    public virtual void GetAxe()
+    
+    public virtual void SetCurrentWeapon()
     {
+      if(playerCtrl.Inventory.btnChange != null) Destroy(playerCtrl.Inventory.btnChange);
+      if(UIButtonBom.Instance.IsOpen) UIButtonBom.Instance.Toggle();
+      switch (currentWeapon) {
+        case "AXE": 
+          GetAxe();
+          break; 
+        case "boomerang":
+          GetBoomerang();
+          break;
+        case "Gun":
+          GetGun();
+          break;
+      }
+    }
+    
+    public virtual void GetBomb()
+    {
+      playerCtrl.Inventory.CreateBtnChange();
+      Transform weapon = this.GetWeapon("Bomb");
+      if (weapon == null) return;
+      this.playerCtrl.Animator.SetInteger("State",2);
+      Vector3 pos = new Vector3(0.014f, 0.069f, 0.035f);
+      Quaternion rot = Quaternion.Euler(167.404f, -49.20001f, -197.064f);
+      StartCoroutine(ChangeWeapon(weapon, pos, rot, Vector3.one*0.3f));
+      this.isAttack = false;
+      this.isShoot = false;
+    }
+    
+    public virtual void GetSmoke()
+    {
+      playerCtrl.Inventory.CreateBtnChange();
+      Transform weapon = this.GetWeapon("Smoke");
+      if (weapon == null) return;
+      this.playerCtrl.Animator.SetInteger("State",2);
+      Vector3 pos = new Vector3(0.081f, 0.086f, -0.007f);
+      Quaternion rot = Quaternion.Euler(-59.575f, 69.149f, -78.178f);
+      StartCoroutine(ChangeWeapon(weapon, pos, rot, Vector3.one*1.8f));
+      this.isAttack = false;
+      this.isShoot = false;
+    }
+    public virtual void GetAxe() {
+      currentWeapon = "AXE";
         Transform weapon = this.GetWeapon("AXE");
         if (weapon == null) return;
         this.playerCtrl.Animator.SetInteger("State",1);
-        StartCoroutine(ChangeAxe(weapon));
+        Vector3 pos = new Vector3(0, 0, -.18f);
+        Quaternion rot = Quaternion.Euler(90, -90, 90);
+        StartCoroutine(ChangeWeapon(weapon, pos, rot, Vector3.one));
         this.isAttack = true;
         this.isShoot = false;
     }
 
-    IEnumerator ChangeAxe(Transform weapon)
+    IEnumerator ChangeWeapon(Transform weapon, Vector3 pos, Quaternion rot, Vector3 scale)
     {
         yield return new WaitForSeconds(0.3f);
         Transform gun = this.playerCtrl.handPos.transform.GetChild(0);
         gun.parent = this.playerCtrl.weaponPos.transform;
-        gun.localRotation = Quaternion.Euler(0, -90, 90);
-        gun.localPosition = new Vector3(-0.27f, -0.06f, 0.088f);
-        gun.localScale = new Vector3(0.18f, 0.18f, 0.18f);
+        gun.gameObject.SetActive(false);
 
         weapon.transform.parent = this.playerCtrl.handPos.transform;
-        weapon.transform.localRotation = Quaternion.Euler(90, -90, 90);
-        weapon.transform.localPosition = new Vector3(0, 0, -.18f);
-        weapon.transform.localScale = Vector3.one;
+        weapon.gameObject.SetActive(true);
+        weapon.transform.localRotation = rot;
+        weapon.transform.localPosition = pos;
+        weapon.transform.localScale = scale;
     }
 
     public virtual void GetGun()
     {
+      currentWeapon = "Gun";
         Transform weapon = this.GetWeapon("Gun");
         if (weapon == null) return;
         this.playerCtrl.Animator.SetInteger("State", 0);
-        StartCoroutine(ChangeGun(weapon));
+        Vector3 pos = new Vector3(0.294f, 0.01f, -0.052f);
+        Vector3 scale = new Vector3(0.15f, 0.15f, 0.15f);
+        Quaternion rot = Quaternion.Euler(-24.348f, -101.764f, 92.357f);
+        StartCoroutine(ChangeWeapon(weapon, pos, rot, scale));
         this.isAttack = false;
         this.isShoot = true;
         BulletSpawner.Instance.SetBullet();
     }
-
-    IEnumerator ChangeGun(Transform weapon)
+    
+    public virtual void GetBoomerang()
     {
-        yield return new WaitForSeconds(0.3f);
-        Transform axe = this.playerCtrl.handPos.transform.GetChild(0);
-        axe.parent = this.playerCtrl.weaponPos.transform;
-        axe.localRotation = Quaternion.Euler(90, 0, 90);
-        axe.localPosition = new Vector3(0.09f, -0.04f, -0.082f);
-        axe.localScale = new Vector3(1,1,1);
-
-        weapon.parent = this.playerCtrl.handPos.transform;
-        weapon.localRotation = Quaternion.Euler(-24.348f, -101.764f, 92.357f);
-        weapon.localPosition = new Vector3(0.294f, 0.01f, -0.052f);
-        weapon.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+      currentWeapon = "boomerang";
+      Transform weapon = this.GetWeapon("boomerang");
+      if (weapon == null) return;
+      this.playerCtrl.Animator.SetInteger("State", 0);
+      Vector3 pos = new Vector3(0.262f, -0.009f, 0.042f);
+      Vector3 scale = new Vector3(0.8f, 0.8f, 0.8f);
+      Quaternion rot = Quaternion.Euler(6.749f, 66.991f, -73.885f);
+      StartCoroutine(ChangeWeapon(weapon, pos, rot, scale));
+      this.isAttack = false;
+      this.isShoot = true;
+      BulletSpawner.Instance.SetBoomerang();
     }
 
     protected virtual Transform GetWeapon(string weapon)
     {
         foreach (Transform tran in this.playerCtrl.weaponPos.transform)
         {
-            if (tran.name == weapon)
-                return tran;
+          if (tran.name == weapon) {
+            tran.gameObject.SetActive(true);
+            return tran;
+          }
         }
         return null;
+    }
+    
+    public void Throw(float throwForce, string typebomb)
+    {
+      throwForce = throwForce > 1f ? 1f : throwForce;
+      Transform bomb = BulletSpawner.Instance.Spawn(typebomb, this.playerCtrl.handPos.transform.position, transform.rotation);
+      Rigidbody rigi = bomb.GetComponentInChildren<Rigidbody>();
+      Vector3 forceToAdd = PlayerCtrl.Instance.transform.forward * throwForce * 5 + PlayerCtrl.Instance.transform.up * 6;
+      rigi.AddForce(forceToAdd, ForceMode.Impulse);
+      playerCtrl.Inventory.DeductAbilities(typebomb);
     }
 }

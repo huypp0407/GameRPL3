@@ -43,6 +43,7 @@ public class AutoScroll : _MonoBehaviour
         else uIItemInventory = transform.GetChild(2).GetComponent<UIItemInventory>();
 
         UIReward.Instance.AddReward(uIItemInventory);
+
         this.wormHole.transform.position = PlayerCtrl.Instance.transform.position + new Vector3(0, 0, 5);
         yield return new WaitForSeconds(3f);
         ItemDropSpawner.Instance.GetAllItem();

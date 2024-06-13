@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMove : _MonoBehaviour
 {
     public PlayerCtrl playerCtrl;
-    [SerializeField] protected float moveSpeed = 3.5f;
+    public float moveSpeed = 3.5f;
     [SerializeField] protected FixedJoystick fixedJoystick;
     //[SerializeField] protected Vector3 direction;
     [SerializeField] protected Vector2 direction;

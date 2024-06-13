@@ -6,6 +6,8 @@ public class BtnBoomerang : BaseButton
 {
     protected override void OnClick()
     {
-        BulletSpawner.Instance.SetBoomerang();
+        PlayerShooting.Instance.GetBoomerang();
+        if(!UIButtonBom.Instance.IsOpen) return;
+        UIButtonBom.Instance.Toggle();
     }
 }
