@@ -11,11 +11,11 @@ public class LevelSelection : _MonoBehaviour {
   [SerializeField] protected PlayableDirector timeline;
 
   protected override void Start() {
-    // PlayerPrefs.SetInt("Lv1", 1);
-    // PlayerPrefs.SetInt("Lv2", 0);
-    // PlayerPrefs.SetInt("Lv3", 0);
-    // PlayerPrefs.SetInt("Timelinee-Lv2", 0);
-    // PlayerPrefs.SetInt("Timelinee-Lv3", 0);
+   /* PlayerPrefs.SetInt("Lv1", 1);
+    PlayerPrefs.SetInt("Lv2", 0);
+    PlayerPrefs.SetInt("Lv3", 0);
+    PlayerPrefs.SetInt("Timelinee-Lv2", 0);
+    PlayerPrefs.SetInt("Timelinee-Lv3", 0);*/
     UpdateLevelStatus();
   }
 
